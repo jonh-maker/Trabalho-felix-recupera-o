@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List - Meus Projetos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Gerenciador de Tarefas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="projetos.html">Meus Projetos</a></li>
+            <li><a href="tarefas.html">Minhas Tarefas</a></li>
+            <li><a href="categorias.html">Categorias</a></li>
+            <li><a href="usuarios.html">Usuários</a></li>
+            <!-- Login/Logout dinâmico via auth.js -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h2 id="form-titulo-projeto">Adicionar Novo Projeto</h2>
+            <form id="form-projeto">
+                <input type="hidden" id="id_projeto">
+                
+                <div class="form-group">
+                    <label for="nome_projeto">Nome do Projeto:</label>
+                    <input type="text" id="nome_projeto" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao_projeto">Descrição:</label>
+                    <textarea id="descricao_projeto" rows="3"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn" id="btn-salvar-projeto">Salvar Projeto</button>
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Meus Projetos</h3>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Data de Criação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-projetos-corpo">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Desenvolvido por [Jonas e Antonio]</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/projetos_controle.js"></script>
+</body>
+</html>
