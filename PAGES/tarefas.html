@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List - Minhas Tarefas</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Gerenciador de Tarefas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="projetos.html">Meus Projetos</a></li>
+            <li><a href="tarefas.html">Minhas Tarefas</a></li>
+            <li><a href="categorias.html">Categorias</a></li>
+            <li><a href="usuarios.html">Usuários</a></li>
+            <!-- Login/Logout dinâmico via auth.js -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h2 id="form-titulo-tarefa">Adicionar Nova Tarefa</h2>
+            <form id="form-tarefa">
+                <input type="hidden" id="id_tarefa">
+                
+                <div class="form-group">
+                    <label for="titulo_tarefa">Título da Tarefa:</label>
+                    <input type="text" id="titulo_tarefa" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao_tarefa">Descrição:</label>
+                    <textarea id="descricao_tarefa" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="projeto_id">Projeto:</label>
+                    <select id="projeto_id" required>
+                        <option value="">Selecione um projeto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="data_limite">Data Limite:</label>
+                    <input type="date" id="data_limite">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Em Andamento">Em Andamento</option>
+                        <option value="Concluída">Concluída</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn" id="btn-salvar-tarefa">Salvar Tarefa</button>
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Minhas Tarefas</h3>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Tarefa</th>
+                        <th>Projeto</th>
+                        <th>Data Limite</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-tarefas-corpo">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Desenvolvido por [Jonas e Antonio]</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/tarefas_controle.js"></script>
+</body>
+</html>
