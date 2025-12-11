@@ -1,0 +1,722 @@
+/**
+ * ============================================================
+ * ARQUIVO: style.css
+ * DESCRIÇÃO: Folha de estilos principal do sistema To-Do List
+ * 
+ * Organizei os estilos em seções numeradas para facilitar
+ * a navegação e manutenção do código. Usei variáveis CSS
+ * para definir as cores do tema, facilitando alterações.
+ * ============================================================
+ */
+
+/* ============================================================
+   1. VARIÁVEIS CSS (Custom Properties)
+   
+   Defini todas as cores do tema aqui para facilitar alterações.
+   Para mudar o tema do site, basta alterar estas variáveis!
+   ============================================================ */
+:root {
+    --cor-fundo: #f8fafc;           /* Cor de fundo geral do site */
+    --cor-container: #ffffff;        /* Cor de fundo dos cards */
+    --cor-texto: #334155;            /* Cor principal do texto */
+    --cor-primaria: #6366f1;         /* Cor de destaque (roxo/azul) */
+    --cor-secundaria: #10b981;       /* Cor secundária (verde) */
+    --cor-destaque-hover: #f59e0b;   /* Cor para hover (amarelo/laranja) */
+    --cor-erro: #ef4444;             /* Cor para erros (vermelho) */
+    --cor-sombra: rgba(51, 65, 85, 0.1); /* Cor das sombras */
+    --cor-header: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradiente do header */
+    --cor-texto-claro: #f8fafc;      /* Texto claro para fundos escuros */
+    --cor-borda: #e2e8f0;            /* Cor das bordas */
+}
+
+/* ============================================================
+   2. ESTILOS GERAIS (Reset e Base)
+   
+   Configuro o estilo base de todo o site aqui.
+   ============================================================ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6; /* Melhora a legibilidade do texto */
+}
+
+/* ============================================================
+   3. HEADER (Cabeçalho)
+   
+   O header tem um gradiente bonito e fica fixo no topo (sticky).
+   ============================================================ */
+header {
+    background: var(--cor-header);
+    color: var(--cor-texto-claro);
+    padding: 20px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;      /* Fica fixo ao rolar a página */
+    top: 0;
+    z-index: 1000;         /* Garante que fica acima de outros elementos */
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* ============================================================
+   4. NAVEGAÇÃO (Menu)
+   
+   Menu horizontal centralizado com efeito de hover.
+   ============================================================ */
+nav {
+    background-color: var(--cor-container);
+    padding: 0;
+    border-bottom: 1px solid var(--cor-borda);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;      /* Remove os bullets da lista */
+    display: flex;         /* Flexbox para alinhar horizontalmente */
+    justify-content: center;
+    flex-wrap: wrap;       /* Permite quebrar linha em telas pequenas */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 16px 24px;
+    display: block;
+    transition: all 0.3s ease; /* Animação suave no hover */
+    border-bottom: 3px solid transparent;
+}
+
+/* Efeito de hover nos links do menu */
+nav ul li a:hover {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+/* ============================================================
+   5. FOOTER (Rodapé)
+   
+   Rodapé com gradiente escuro.
+   ============================================================ */
+footer {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    color: #d1d5db;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ============================================================
+   6. LAYOUT PRINCIPAL
+   
+   Container principal com largura máxima centralizada.
+   ============================================================ */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   7. CARDS
+   
+   Cards são os containers brancos usados em todo o sistema.
+   Têm bordas arredondadas, sombra e efeito de hover.
+   ============================================================ */
+.card {
+    background: var(--cor-container);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--cor-borda);
+    transition: all 0.3s ease;
+}
+
+/* Efeito de "levitar" ao passar o mouse */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card h2, .card h3 {
+    margin-top: 0;
+    color: var(--cor-texto);
+    font-weight: 600;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--cor-borda);
+}
+
+/* ============================================================
+   8. FORMULÁRIOS
+   
+   Estilos para todos os elementos de formulário do sistema.
+   ============================================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-texto);
+    font-size: 0.95em;
+}
+
+/* Estilos base para inputs, textareas e selects */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    box-sizing: border-box;  /* Inclui padding na largura total */
+    font-family: inherit;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background-color: #fafbfc;
+}
+
+/* Efeito de foco nos campos */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Brilho ao redor */
+}
+
+.form-group textarea {
+    resize: vertical;      /* Permite redimensionar apenas verticalmente */
+    min-height: 100px;
+}
+
+/* Link abaixo do formulário (ex: "Já tem conta?") */
+.form-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-link a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.form-link a:hover {
+    color: var(--cor-destaque-hover);
+}
+
+/* Container para múltiplos botões lado a lado */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-buttons .btn {
+    flex: 1;  /* Botões ocupam espaço igual */
+}
+
+/* ============================================================
+   9. BOTÕES
+   
+   Sistema de botões com variações de cores.
+   ============================================================ */
+.btn {
+    background: linear-gradient(135deg, var(--cor-primaria), #818cf8);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;              /* Espaço entre ícone e texto */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* Efeito de hover - botão "sobe" */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Efeito de click */
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Botão de Editar (amarelo/laranja) */
+.btn-edit {
+    background: linear-gradient(135deg, var(--cor-destaque-hover), #fbbf24);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+}
+
+.btn-edit:hover {
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Botão de Excluir (vermelho) */
+.btn-delete {
+    background: linear-gradient(135deg, var(--cor-erro), #f87171);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+}
+
+.btn-delete:hover {
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Botão Secundário (cinza) */
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280, #9ca3af);
+    box-shadow: 0 4px 16px rgba(107, 114, 128, 0.3);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+}
+
+/* ============================================================
+   10. TABELAS
+   
+   Tabelas estilizadas para listagem de dados (CRUD).
+   ============================================================ */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;      /* Mantém bordas arredondadas */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho da tabela */
+.crud-table thead {
+    background: linear-gradient(135deg, var(--cor-primaria), #818cf8);
+    color: white;
+}
+
+.crud-table th,
+.crud-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.crud-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+}
+
+/* Efeito de hover nas linhas */
+.crud-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.crud-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Remove borda da última linha */
+.crud-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Botões menores dentro da tabela */
+.crud-table .btn {
+    padding: 8px 16px;
+    margin: 0 4px;
+    font-size: 0.85em;
+}
+
+/* ============================================================
+   11. CONTAINER DE PESQUISA
+   
+   Barra de busca usada nas páginas de listagem (usuários,
+   projetos, tarefas, categorias).
+   ============================================================ */
+.pesquisa-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;       /* Quebra linha em telas pequenas */
+    margin-bottom: 20px;
+}
+
+.pesquisa-container input {
+    flex: 1;               /* Ocupa espaço disponível */
+    min-width: 200px;      /* Largura mínima para legibilidade */
+    padding: 12px 16px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de foco no campo de pesquisa */
+.pesquisa-container input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* ============================================================
+   12. AMOSTRA DE COR (COLOR SWATCH)
+   
+   Quadradinho colorido que mostra a cor das categorias
+   nas tabelas e seletores.
+   ============================================================ */
+.color-swatch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 2px solid var(--cor-borda);
+    vertical-align: middle; /* Alinha com o texto */
+    margin-right: 10px;
+}
+
+/* ============================================================
+   13. STATUS DAS TAREFAS
+   
+   Badges coloridos que indicam o estado de cada tarefa.
+   Cada status tem cor diferente para fácil identificação.
+   ============================================================ */
+
+/* Status: Pendente (amarelo/laranja) */
+.status-pendente {
+    background-color: #fef3c7;  /* Amarelo claro */
+    color: #d97706;             /* Texto laranja */
+    padding: 4px 12px;
+    border-radius: 20px;        /* Formato de pílula */
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Status: Em Andamento (azul) */
+.status-andamento {
+    background-color: #dbeafe;  /* Azul claro */
+    color: #2563eb;             /* Texto azul */
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Status: Concluída (verde) */
+.status-concluida {
+    background-color: #d1fae5;  /* Verde claro */
+    color: #059669;             /* Texto verde */
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* ============================================================
+   14. ALERTAS DE VENCIMENTO
+   
+   Indicadores visuais para tarefas vencidas ou próximas
+   do vencimento. Ajudam o usuário a priorizar.
+   ============================================================ */
+
+/* Badge: Tarefa VENCIDA (vermelho) */
+.alerta-vencida {
+    background-color: var(--cor-erro);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* Badge: Tarefa PRÓXIMA do vencimento (amarelo) */
+.alerta-proxima {
+    background-color: #fbbf24;  /* Amarelo de alerta */
+    color: #1f2937;             /* Texto escuro para contraste */
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* Linha da tabela: Tarefa VENCIDA */
+/* !important sobrescreve o hover da tabela */
+.tarefa-vencida {
+    background-color: #fef2f2 !important;   /* Fundo vermelho claro */
+    border-left: 4px solid var(--cor-erro); /* Borda vermelha à esquerda */
+}
+
+/* Linha da tabela: Tarefa PRÓXIMA do vencimento */
+.tarefa-proxima-vencimento {
+    background-color: #fffbeb !important;   /* Fundo amarelo claro */
+    border-left: 4px solid #fbbf24;         /* Borda amarela à esquerda */
+}
+
+/* ---- 15. Responsividade ---- */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    
+    header h1 {
+        font-size: 1.4em;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li a {
+        padding: 12px 20px;
+        text-align: center;
+    }
+    
+    main {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .crud-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .pesquisa-container {
+        flex-direction: column;
+    }
+    
+    .pesquisa-container input {
+        width: 100%;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+    }
+    
+    .hero h2 {
+        font-size: 1.8em;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---- 16. Hero Section ---- */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.hero-content h2 {
+    font-size: 2.5em;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    opacity: 0.95;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    background: white;
+    color: #667eea;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- 17. Features Section ---- */
+.features {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2em;
+    color: var(--cor-texto);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.feature-card {
+    background: var(--cor-container);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--cor-borda);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: var(--cor-texto);
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.feature-card p {
+    color: #64748b;
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+}
+
+.feature-link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.feature-link:hover {
+    color: var(--cor-destaque-hover);
+}
+
+/* ---- 18. Stats Section ---- */
+.stats {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 3em;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #9ca3af;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---- 19. CTA Section ---- */
+.cta {
+    background: var(--cor-container);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--cor-borda);
+}
+
+.cta-content h2 {
+    font-size: 2em;
+    color: var(--cor-texto);
+    margin: 0 0 15px 0;
+}
+
+.cta-content p {
+    color: #64748b;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.cta .btn-hero {
+    background: linear-gradient(135deg, var(--cor-primaria), #818cf8);
+    color: white;
+}
