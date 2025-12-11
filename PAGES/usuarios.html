@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List - Gerenciar Usuários</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Gerenciador de Tarefas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="projetos.html">Meus Projetos</a></li>
+            <li><a href="tarefas.html">Minhas Tarefas</a></li>
+            <li><a href="categorias.html">Categorias</a></li>
+            <li><a href="usuarios.html">Usuários</a></li>
+            <!-- Login/Logout dinâmico via auth.js -->
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Card de Pesquisa -->
+        <div class="card">
+            <h2>Pesquisar Usuários</h2>
+            <div class="form-group pesquisa-container">
+                <input type="text" id="pesquisa-usuario" placeholder="Digite nome ou email do usuário...">
+                <button type="button" class="btn" id="btn-pesquisar">Pesquisar</button>
+                <button type="button" class="btn btn-secondary" id="btn-limpar-pesquisa">Limpar</button>
+            </div>
+        </div>
+
+        <!-- Card de Cadastro/Edição -->
+        <div class="card">
+            <h2 id="form-titulo">Cadastrar Novo Usuário</h2>
+            <form id="form-usuario">
+                <input type="hidden" id="id_usuario">
+                
+                <div class="form-group">
+                    <label for="nome_usuario">Nome Completo:</label>
+                    <input type="text" id="nome_usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="email_usuario">E-mail:</label>
+                    <input type="email" id="email_usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha_usuario">Senha:</label>
+                    <input type="password" id="senha_usuario" required>
+                    <small id="aviso-senha" style="display: none; color: #ffa500;">Deixe em branco para manter a senha atual</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirmar_senha_usuario">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senha_usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="endereco_usuario">Endereço:</label>
+                    <input type="text" id="endereco_usuario" maxlength="255" required>
+                </div>
+                <div class="form-group">
+                    <label for="cidade_usuario">Cidade:</label>
+                    <input type="text" id="cidade_usuario" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone_usuario">Telefone:</label>
+                    <input type="text" id="telefone_usuario" maxlength="15" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn" id="btn-salvar">Cadastrar Usuário</button>
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Card da Lista de Usuários -->
+        <div class="card">
+            <h3>Lista de Usuários</h3>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-usuarios-corpo">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Desenvolvido por [Jonas e Antonio]</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/usuarios_controle.js"></script>
+</body>
+</html>
