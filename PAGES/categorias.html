@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List - Minhas Categorias</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Gerenciador de Tarefas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="projetos.html">Meus Projetos</a></li>
+            <li><a href="tarefas.html">Minhas Tarefas</a></li>
+            <li><a href="categorias.html">Categorias</a></li>
+            <li><a href="usuarios.html">Usuários</a></li>
+            <!-- Login/Logout dinâmico via auth.js -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h2 id="form-titulo">Adicionar Nova Categoria</h2>
+            <form id="form-categoria">
+                <input type="hidden" id="id_categoria">
+                
+                <div class="form-group">
+                    <label for="nome_categoria">Nome da Categoria:</label>
+                    <input type="text" id="nome_categoria" required>
+                </div>
+                <div class="form-group">
+                    <label for="cor_categoria">Cor da Categoria:</label>
+                    <input type="color" id="cor_categoria" value="#7f5af0">
+                </div>
+                <button type="submit" class="btn" id="btn-salvar">Salvar Categoria</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Minhas Categorias</h3>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-categorias-corpo">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Desenvolvido por [Jonas e Antonio]</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/categorias_controle.js"></script>
+</body>
+</html>
